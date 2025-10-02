@@ -13,5 +13,3 @@ def display_board(board):
             print(f"| {board[row][col] or count} |", end='')
         print()
         print("----------------")
-
-display_board(board)

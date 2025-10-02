@@ -5,7 +5,7 @@ Simple Tic-Tac-Toe game
 
 ```bash
 # 1) Clone the repository
-git clone https://github.com/defau1tuser0/tic-tac-toe
+git clone https://github.com/defau1tuser0/tic-tac-toe.git
 cd <your-repo>
 
 # 2) Run

@@ -28,22 +28,22 @@ def engine_vs_engine(board, engine_x, engine_o):
             break
 
         if current_player == engine_x:
-            print("X AI's turn")
+            print("X AI's turn:-")
             move = best_move(board, current_player)
             if move:
                 board[move[0]][move[1]] = current_player
             current_player = engine_o
         else:
-            print("X AI's turn")
+            print("O AI's turn:-")
             move = best_move(board, current_player)
             if move:
                 board[move[0]][move[1]] = current_player
             current_player = engine_x
-        
-        clear_screen()
 
 
 def game(board, human_player, engine):
+    if human_player == 'AI':
+            return engine_vs_engine(board, 'X', 'O')
     current_player = human_player
 
     while True:
@@ -59,27 +59,25 @@ def game(board, human_player, engine):
             print("Draw...")
             break
         
-        if human_player == 'AI':
-            return engine_vs_engine(board, 'X', 'O')
+        
+        if current_player == human_player:
+            print("Your turn")
+            while True: 
+                position = int(input("Enter your position: "))
+                if 0 < position < 10:
+                    row, col = get_position(position)
+                    if board[row][col] == None:
+                        board[row][col] = current_player
+                        break
+                print("Invalid position, try again")
+            current_player = engine
         else:
-            if current_player == human_player:
-                print("Your turn")
-                while True: 
-                    position = int(input("Enter your position: "))
-                    if 0 < position < 10:
-                        row, col = get_position(position)
-                        if board[row][col] == None:
-                            board[row][col] = current_player
-                            break
-                    print("Invalid position, try again")
-                current_player = engine
-            else:
-                print("AI's turn")
-                move = best_move(board, current_player)
-                if move:
-                    board[move[0]][move[1]] = current_player
-                current_player = human_player
-            
+            print("AI's turn")
+            move = best_move(board, current_player)
+            if move:
+                board[move[0]][move[1]] = current_player
+            current_player = human_player
+        
         clear_screen()
                 
 def main(board):
